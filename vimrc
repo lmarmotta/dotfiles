@@ -43,7 +43,7 @@ endfunction
 nnoremap <S-j> 5j
 nnoremap <S-k> 5k
 
-" Default the statusline to green when entering Vim
+" Default the statusline to green when entering Vim.
 hi statusline guibg=White ctermfg=8 guifg=White ctermbg=15
 
 " Change color of the status bar.
@@ -63,11 +63,11 @@ au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
 " Default the statusline to gray when entering Vim.
 hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
 
-"Auto-recognise fortran 90 / 77 identation differences.
+"Auto-recognise fortran 90 / 77 identation differences [Shift-Z to change to 77/90]
 nmap <S-z> :set syntax=fortran<CR>:let b:fortran_fixed_source=!b:fortran_fixed_source<CR>:set syntax=text<CR>:set syntax=fortran<CR>
 nmap <C-z> :filetype detect<CR>
 
-" Remap change between splits.
+" Remap change between splits [Ctrl-movment keys].
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>

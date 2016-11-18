@@ -1,0 +1,31 @@
+[user]
+	name = Leonardo Motta Maia
+	email = 
+[core]
+	editor = vim
+	whitespace = trailing-space, tab-in-indent, tabwidth=4
+	excludesFile = *.swp
+	autocrlf = input
+	filemode = false
+[alias]
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	lg = log --color --graph --abbrev-commit --pretty=format:'%CredCommit: %h%Creset by %Cblue%an <%ae>%Creset %Cgreen(%cr) -%C(yellow)%d%Creset%n Title: %s %n %n %b'
+	linelg = log --color --graph --abbrev-commit --pretty=format:'%CredCommit: %h%Creset %Cblue%an%Creset %Cgreen(%cr)%Creset - %s %C(yellow)%d%Creset'
+	diffw = diff --ignore-space-change
+
+	stlive = !watch -c -n 0.1 "git status"
+	tree = !watch -n 0.1 -c -t "git log --graph --all --abbrev-commit --decorate --color --date=short -1000 --pretty=oneline"
+	diffwlive = !watch -c -n 0.1 "git diff --color --ignore-space-change"
+
+	unfollow = update-index --assume-unchanged
+        follow = checkout --track
+        cd = checkout
+	undomerge = reset --hard
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[mergetool]
+	keepBackup = false
