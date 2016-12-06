@@ -227,6 +227,7 @@ let s:comment_map = {
     \   "tex": '%',
     \   "fortran": '!',
     \   "make": '#',
+    \   "matlab": '%',
     \ }
 
 function! ToggleComment()
