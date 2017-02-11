@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# This script install all dependencies for
-# Open Suse Leap from a raw installation
-# Before running type chmod +x 'this script'
-# The execution should be done at ~/
-#
-# Edited by Leonardo 29/06/2016
+# Configure a raw OpenSUSE installation.
+# Edited by Leonardo 29/06/2016  [OpenSUSE Leap 42.1]
+# Updated by Leonardo 11/02/2016 [OpenSUSE Leap 42.2]
 
 
 echo "----------------------------------------------"
@@ -13,16 +10,81 @@ echo "Installing All Dependencies for Open Suse Leap"
 echo "             Please Wait ...                  "
 echo "----------------------------------------------"
 
-#==========================================================
+
+#==============================================================================
 # Commands that will be used during installation.
 
 command='sudo zypper -non-iteractive -no-gpg-checks install '
+repo_command='sudo zypper ar --check --refresh '
+
+
+#==============================================================================
+# Config repos...
 
 # Updating system from a raw-installation
 sudo zypper refresh
 sudo zypper update
 
-#==========================================================
+# Packman repo.
+$repo_command http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_42.2/ Packman-Repository
+sudo zypper refresh
+
+# Science repo.
+$repo_command http://download.opensuse.org/repositories/science/openSUSE_Leap_42.2/ Science
+sudo zypper refresh
+
+# Adobe Flash plugin - I hate you but I need you.
+$repo_command http://linuxdownload.adobe.com/linux/x86_64/ Adobe
+sudo zypper refresh
+
+# I need you for some fancy compilation.
+$repo_command http://opensuse-guide.org/repo/openSUSE_Tumbleweed/ libdvdcss-repository
+sudo zypper refresh
+
+# Installing utilities package.
+$repo_command http://download.opensuse.org/repositories/utilities/openSUSE_Leap_42.2/ Utilities
+sudo zypper refresh
+
+# Nvidia Drivers.
+$repo_command http://http.download.nvidia.com/opensuse/leap/42.2/ NVIDIA
+sudo zypper refresh
+
+
+#==============================================================================
+# Install Bumblebee and Nvidia Drivers.
+
+# Basic stuff.
+sudo zypper in bumblebee bbswitch
+
+# Add me to bumblebee group.
+sudo usermod -aG bumblebee leonardo
+
+# Enable and start bumblebee.
+sudo systemctl enable bumblebeed
+sudo systemctl start bumblebeed
+
+# Blacklist neeuvau.
+sudo echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/99-local.conf
+sudo mkinitrd
+
+# Install needed things for 32 bits.
+sudo zypper in Mesa-libGL1-32bit libX11-6-32bit primus-32bit
+
+# Install nvidia drivers.
+sudo zypper install-new-recommends
+
+
+#==============================================================================
+# Install adobe flash plugin.
+
+sudo zypper se -s -r Adobe
+sudo zypper in adobe-release-x86_64
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+sudo zypper in flash-plugin
+
+
+#==============================================================================
+# General installation.
 
 # I like firefox but chromium is faster...
 $command chromium
@@ -38,6 +100,9 @@ $command texlive-tree-dvips
 $command texlive-minted
 $command texlive-scheme-full
 sudo texhash  
+
+# Gnome specific stuff.
+$command gnome-tweak-tool dconf-editor
 
 # Installing Developing Enviroment.
 $command vim-plugin-colorschemes   # Beautiful colours for my vim <3
@@ -93,10 +158,9 @@ $command automake
 alias01="alias l='ls-l'"
 echo $alias01>>.bashrc
 
-#==========================================================
-# ---------------------------------------------------------
-#                  Spotfy installation.
-# ---------------------------------------------------------
+
+#==============================================================================
+# Spotfy installation.
 
 sudo zypper refresh
 sudo zypper update
