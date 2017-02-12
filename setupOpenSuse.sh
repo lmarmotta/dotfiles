@@ -5,10 +5,12 @@
 # Updated by Leonardo 11/02/2016 [OpenSUSE Leap 42.2]
 
 
-echo "----------------------------------------------"
-echo "Installing All Dependencies for Open Suse Leap"
-echo "             Please Wait ...                  "
-echo "----------------------------------------------"
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
+echo "          Installing All Dependencies for Open Suse Leap                 "
+echo "                       Please Wait ...                                   "
+echo "-------------------------------------------------------------------------"
 
 
 #==============================================================================
@@ -21,9 +23,21 @@ repo_command='sudo zypper ar --check --refresh '
 #==============================================================================
 # Config repos...
 
+
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
+echo " Updating system...                                                      "
+
 # Updating system from a raw-installation
 sudo zypper refresh
 sudo zypper update
+
+
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
+echo " Config Repos..."
 
 # Packman repo.
 $repo_command http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_42.2/ Packman-Repository
@@ -49,30 +63,34 @@ sudo zypper refresh
 $repo_command http://http.download.nvidia.com/opensuse/leap/42.2/ NVIDIA
 sudo zypper refresh
 
+# Bumblebee driver.
+sudo zypper addrepo http://download.opensuse.org/repositories/X11:Bumblebee/openSUSE_Leap_42.2/X11:Bumblebee.repo
+sudo zypper refresh
+
+# Make shure everything is ok...
+sudo zypper up
+
+
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
+echo "Installing Nvidia drivers..."
 
 #==============================================================================
 # Install Bumblebee and Nvidia Drivers.
+# Instructions: https://en.opensuse.org/index.php?title=SDB:NVIDIA_Bumblebee&oldid=118653
 
-# Basic stuff.
-sudo zypper in bumblebee bbswitch
+sudo zypper in linux-glibc-devel
+sudo zypper in -t pattern devel_kernel
+sudo zypper in nvidia-bumblebee
+sudo systemctl enable dkms
+sudo zypper in nvidia-bumblebee-32bit
 
-# Add me to bumblebee group.
-sudo usermod -aG bumblebee leonardo
 
-# Enable and start bumblebee.
-sudo systemctl enable bumblebeed
-sudo systemctl start bumblebeed
-
-# Blacklist neeuvau.
-sudo echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/99-local.conf
-sudo mkinitrd
-
-# Install needed things for 32 bits.
-sudo zypper in Mesa-libGL1-32bit libX11-6-32bit primus-32bit
-
-# Install nvidia drivers.
-sudo zypper install-new-recommends
-
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
+echo "Installing fucking Flash player..."
 
 #==============================================================================
 # Install adobe flash plugin.
@@ -82,6 +100,11 @@ sudo zypper in adobe-release-x86_64
 sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 sudo zypper in flash-plugin
 
+
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
+echo "Installing General stuff..." 
 
 #==============================================================================
 # General installation.
@@ -159,6 +182,11 @@ alias01="alias l='ls-l'"
 echo $alias01>>.bashrc
 
 
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
+echo "Installing Spotfy..."
+
 #==============================================================================
 # Spotfy installation.
 
@@ -186,9 +214,12 @@ xdg-icon-resource install --size 16 /opt/spotify/spotify-client/Icons/spotify-li
 # Add Spotify to the Applications menu
 cp -p /opt/spotify/spotify-client/spotify.desktop /usr/share/applications/
 
-echo "----------------------------------------------"
+
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
 echo "We are done now so... lets reboot the system  "
-echo "----------------------------------------------"
+echo "-------------------------------------------------------------------------"
 
 # Not Windows but, for shure, a refresh is ok.
 sudo reboot
