@@ -17,11 +17,6 @@ echo "-------------------------------------------------------------------------"
 # Commands that will be used during installation.
 
 command='sudo zypper -non-iteractive -no-gpg-checks install '
-repo_command='sudo zypper ar --check --refresh '
-
-
-#==============================================================================
-# Config repos...
 
 
 echo ""
@@ -33,74 +28,6 @@ echo " Updating system...                                                      "
 sudo zypper refresh
 sudo zypper update
 
-
-echo ""
-echo "-------------------------------------------------------------------------"
-echo "-------------------------------------------------------------------------"
-echo " Config Repos..."
-
-# Packman repo.
-$repo_command http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_42.2/ Packman-Repository
-sudo zypper refresh
-
-# Science repo.
-$repo_command http://download.opensuse.org/repositories/science/openSUSE_Leap_42.2/ Science
-sudo zypper refresh
-
-# Adobe Flash plugin - I hate you but I need you.
-$repo_command http://linuxdownload.adobe.com/linux/x86_64/ Adobe
-sudo zypper refresh
-
-# I need you for some fancy compilation.
-$repo_command http://opensuse-guide.org/repo/openSUSE_Tumbleweed/ libdvdcss-repository
-sudo zypper refresh
-
-# Installing utilities package.
-$repo_command http://download.opensuse.org/repositories/utilities/openSUSE_Leap_42.2/ Utilities
-sudo zypper refresh
-
-# Nvidia Drivers.
-$repo_command http://http.download.nvidia.com/opensuse/leap/42.2/ NVIDIA
-sudo zypper refresh
-
-# Bumblebee driver.
-sudo zypper addrepo http://download.opensuse.org/repositories/X11:Bumblebee/openSUSE_Leap_42.2/X11:Bumblebee.repo
-sudo zypper refresh
-
-# Make shure everything is ok...
-sudo zypper up
-
-
-echo ""
-echo "-------------------------------------------------------------------------"
-echo "-------------------------------------------------------------------------"
-echo "Installing Nvidia drivers..."
-
-#==============================================================================
-# Install Bumblebee and Nvidia Drivers.
-# Instructions: https://en.opensuse.org/index.php?title=SDB:NVIDIA_Bumblebee&oldid=118653
-
-sudo zypper in linux-glibc-devel
-sudo zypper in -t pattern devel_kernel
-sudo zypper in nvidia-bumblebee
-sudo systemctl enable dkms
-sudo zypper in nvidia-bumblebee-32bit
-
-
-echo ""
-echo "-------------------------------------------------------------------------"
-echo "-------------------------------------------------------------------------"
-echo "Installing fucking Flash player..."
-
-#==============================================================================
-# Install adobe flash plugin.
-
-sudo zypper se -s -r Adobe
-sudo zypper in adobe-release-x86_64
-sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
-sudo zypper in flash-plugin
-
-
 echo ""
 echo "-------------------------------------------------------------------------"
 echo "-------------------------------------------------------------------------"
@@ -108,9 +35,6 @@ echo "Installing General stuff..."
 
 #==============================================================================
 # General installation.
-
-# I like firefox but chromium is faster...
-$command chromium
 
 # Installing Build Essentials.
 $command --type pattern devel_basis
