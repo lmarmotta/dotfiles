@@ -22,6 +22,7 @@
 	unfollow = update-index --assume-unchanged
         follow = checkout --track
         cd = checkout
+        ls = branch -a
 	undomerge = reset --hard
 [diff]
 	tool = vimdiff
