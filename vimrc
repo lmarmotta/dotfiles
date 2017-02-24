@@ -2,7 +2,7 @@
 "              Vim Config file
 " ============================================
 
-"Removes vi-compatibility (mandatory !)
+" Removes vi-compatibility (mandatory !)
 set nocp
 
 " File types and coloration have to be set here
@@ -91,6 +91,9 @@ set hlsearch            " Highlight search
 set incsearch           " See results of search step by step
 set showmatch           " Parenthesis matches
 set matchtime=2         " Show new matching parenthesis for 2/10th of sec
+set smartcase           " Ignore case in search.
+highlight clear Search
+highlight       Search    ctermfg=White
 
 " System.
 set vb t_vb=""          " Removes the Fucking Bell Of Death...
@@ -134,9 +137,6 @@ nnoremap <C-n> :call NumberToggle()<CR>
 " Mappings for up and down (multilines)
 nmap <A-k> gk
 nmap <A-j> gj
-
-" C / C++ (OmniCppComplete)
-autocmd FileType c,cpp map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Editing layout.
 set formatoptions+=ln               " See :h 'formatoptions' :)
@@ -286,3 +286,45 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <C-x> :ZoomToggle<CR>
+
+" Powerline stuff.
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set laststatus=2
+
+" No more folds.
+set nofoldenable
+
+" Lets correct the Alt key dep on OpenSUSE.
+for i in range(97,122)
+  let c = nr2char(i)
+  exec "map \e".c." <M-".c.">"
+  exec "map! \e".c." <M-".c.">"
+endfor
+
+" List buffers by name.
+command! -bang Ls redir @" | silent ls<bang> | redir END | echo " " |
+ \ perl {
+ \ my $msg=VIM::Eval('@"');
+ \ my %list=();
+ \ my $key, $value;
+ \ while($msg =~ m/(.*?line\s+\d+)/g)
+ \ {
+ \ $value = $1;
+ \ $value =~ m/"([^"]+)"/;
+ \ $key = $1;
+ \ ($^O =~ /mswin/i) and $key = lc($key);
+ \ $list{$key} = $value;
+ \ }
+ \ my $msg = '';
+ \ for $key (sort keys %list)
+ \ {
+ \ $msg .= "$list{$key}\n";
+ \ }
+ \ VIM::Msg($msg);
+ \ }
+ \ <CR>
+
+" List buffers using Alt-e.
+noremap <A-e> :Ls<cr>
