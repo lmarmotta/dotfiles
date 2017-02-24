@@ -11,6 +11,9 @@ filetype plugin on
 filetype indent on
 set background=dark
 
+" Disable Ctrl+j as insert mode.
+let g:BASH_Ctrl_j = 'off'
+
 " Set the best colorscheme.
 color desert
 
@@ -328,3 +331,7 @@ command! -bang Ls redir @" | silent ls<bang> | redir END | echo " " |
 
 " List buffers using Alt-e.
 noremap <A-e> :Ls<cr>
+
+" Provide hl movements in Insert mode via the <Alt> modifier key
+inoremap <c-h> <C-o>h
+inoremap <c-l> <C-o>l
