@@ -20,7 +20,7 @@ color desert
 " Set terminal to 256 colors.
 set t_Co=256
 
-" Set clipboard.
+" Set clipboard (just Ubuntu).
 set clipboard=unnamedplus
 nnoremap <C-y> "+y
 vnoremap <C-y> "+y
@@ -95,36 +95,36 @@ set incsearch           " See results of search step by step
 set showmatch           " Parenthesis matches
 set matchtime=2         " Show new matching parenthesis for 2/10th of sec
 set smartcase           " Ignore case in search.
-highlight clear Search
-highlight       Search    ctermfg=White
+highlight clear Search                   " Change the highlight style.
+highlight       Search    ctermfg=Red    
 
 " System.
-set vb t_vb=""          " Removes the Fucking Bell Of Death...
-set history=1024        " Memorize 1024 last commands
-set updatetime=2000     " Update swap (and showmark plugin) every 2 sec
+set vb t_vb=""          " Removes the Fucking Bell Of Death.
+set history=1024        " Memorize 1024 last commands.
+set updatetime=2000     " Update swap (and showmark plugin) every 2 sec.
 
 " Command mode options
-set wildmenu            " Completions view in ex mode (super useful !)
-set cmdheight=1         " Command line height
-set laststatus=2        " When to show status line (2=always)
-set ruler               " Show line,col in statusbar
-set number              " Show lines
-set showmode            " Show mode in status (insertion, visual...)
-set showcmd             " Show beginning of normal commands 
+set wildmenu            " Completions view in ex mode (super useful !).
+set cmdheight=1         " Command line height.
+set laststatus=2        " When to show status line (2=always).
+set ruler               " Show line,col in statusbar.
+set number              " Show lines.
+set showmode            " Show mode in status (insertion, visual...).
+set showcmd             " Show beginning of normal commands .
 
 " Editing layout
 set modeline
-set formatoptions+=ln   "See :h 'formatoptions'
-set linebreak           "Break lines at words, not chars
-set so=5                "When moving vertical, start scrolling 4 before 
+set formatoptions+=ln   "See :h 'formatoptions'.
+set linebreak           "Break lines at words, not chars.
+set so=5                "When moving vertical, start scrolling 4 before .
 
-" Fix backspace
+" Fix backspace.
 set backspace=start,indent,eol
 
 " Don't complete bin files.
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.ps,*.pdf,*.cmo,*.cmi,*.cmx 
 
-" Relative or absolute number lines
+" Relative or absolute number lines (Ctrl-n).
 function! NumberToggle()
     if(&nu == 1)
         set nu!
@@ -137,21 +137,20 @@ endfunction
 
 nnoremap <C-n> :call NumberToggle()<CR>
 
-" Mappings for up and down (multilines)
+" Mappings for up and down (multilines).
 nmap <A-k> gk
 nmap <A-j> gj
 
 " Editing layout.
-set formatoptions+=ln               " See :h 'formatoptions' :)
-set backspace=start,indent,eol      " Fix backspace
-set linebreak                       " Break lines at words, not chars
-set so=4                            " When moving vertical, start scrolling 
-                                    " 4 lines before reaching bottom
+set formatoptions+=ln               " See :h 'formatoptions' :).
+set backspace=start,indent,eol      " Fix backspace.
+set linebreak                       " Break lines at words, not chars.
+set so=4                            " Scroll 4 lines before reaching bottom. 
 
 " Set bar on the cursor.
 set cursorline
 
-" Highlight the 80th colum of text. (Ctrl-h)
+" Highlight the 80th colum of text (Ctrl-g).
 function! g:ToggleColorColumn()
     if &colorcolumn != ''
         setlocal colorcolumn&
@@ -170,13 +169,13 @@ nnoremap <C-g> :call g:ToggleColorColumn()<CR>
 :command WA wa
 :command Wa wa
 
-" Corrigindo problemas com o vim-latex
+" Corrigindo problemas com o vim-latex.
 let g:Tex_BibtexFlavor = 'bibtex'
 let g:Tex_BIBINPUTS = "%\.bib"
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Imap_UsePlaceHolders = 0
 
-" Desabilitando atalhos chatos como Traditional para /item e outros
+" Desabilitando atalhos chatos como Traditional para /item e outros.
 let g:Tex_AdvancedMath = 0 
 let g:Tex_EnvironmentMaps=0
 let g:Tex_EnvironmentMenus=0
@@ -200,7 +199,7 @@ noremap H ^
 noremap L g_
 
 " Set :noh to enter in command mode.
-nnoremap <Space> :noh<CR><CR>
+nnoremap <Space> :noh<CR>
 
 " Comment blocks of code.
 let s:comment_map = { 
@@ -275,7 +274,7 @@ set statusline+=%=                           " right align remainder
 set statusline+=%-14(%l,%c%V%)               " line, character  
 set statusline+=%<%P                         " file position  
 
-" Zoom window in tmux style super cool ! [Ctrl+x]
+" Zoom window in tmux style super cool ! [Ctrl+x].
 function! s:ZoomToggle() abort
     if exists('t:zoomed') && t:zoomed
         execute t:zoom_winrestcmd
@@ -329,7 +328,7 @@ command! -bang Ls redir @" | silent ls<bang> | redir END | echo " " |
  \ }
  \ <CR>
 
-" List buffers using Alt-e.
+" List buffers by alphabetic order using Alt-e.
 noremap <A-e> :Ls<cr>
 
 " Provide hl movements in Insert mode via the <Alt> modifier key
