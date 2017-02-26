@@ -14,6 +14,13 @@ set background=dark
 " Disable Ctrl+j as insert mode.
 let g:BASH_Ctrl_j = 'off'
 
+" Lets correct the Alt key dep on OpenSUSE.
+for i in range(97,122)
+  let c = nr2char(i)
+  exec "map \e".c." <M-".c.">"
+  exec "map! \e".c." <M-".c.">"
+endfor
+
 " Set the best colorscheme.
 color desert
 
@@ -185,8 +192,8 @@ let g:Tex_SectionMaps=0
 let g:Tex_SectionMenus=0
 
 " Work with lines without change insert mode.
-nmap <S-m> O<Esc>
-nmap <C-m> o<Esc>
+nmap <A-m> O<Esc>
+nmap <A-M> o<Esc>
 
 " Set buffer navigation using F10.
 set wildcharm=<C-Z>
@@ -197,6 +204,9 @@ nnoremap * *<C-O>
 " Remap H and L to end and begin of line.
 noremap H ^
 noremap L g_
+
+" Map G to go to the middle of the line.
+nnoremap <S-s> :exe 'normal! '.(virtcol('$')/2).'\|'<cr>
 
 " Set :noh to enter in command mode.
 nnoremap <Space> :noh<CR>
@@ -297,13 +307,6 @@ set laststatus=2
 
 " No more folds.
 set nofoldenable
-
-" Lets correct the Alt key dep on OpenSUSE.
-for i in range(97,122)
-  let c = nr2char(i)
-  exec "map \e".c." <M-".c.">"
-  exec "map! \e".c." <M-".c.">"
-endfor
 
 " List buffers by name.
 command! -bang Ls redir @" | silent ls<bang> | redir END | echo " " |
