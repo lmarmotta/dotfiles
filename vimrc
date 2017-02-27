@@ -34,10 +34,6 @@ vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 
-" Set tab control.
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-
 " Set the tab completion just like bash.
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -76,12 +72,6 @@ hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
 "Auto-recognise fortran 90 / 77 identation differences [Shift-Z to change to 77/90]
 nmap <S-z> :set syntax=fortran<CR>:let b:fortran_fixed_source=!b:fortran_fixed_source<CR>:set syntax=text<CR>:set syntax=fortran<CR>
 nmap <C-z> :filetype detect<CR>
-
-" Remap change between splits [Ctrl-movment keys].
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " No more delays between modes.
 set timeoutlen=0
@@ -144,10 +134,6 @@ endfunction
 
 nnoremap <C-n> :call NumberToggle()<CR>
 
-" Mappings for up and down (multilines).
-nmap <A-k> gk
-nmap <A-j> gj
-
 " Editing layout.
 set formatoptions+=ln               " See :h 'formatoptions' :).
 set backspace=start,indent,eol      " Fix backspace.
@@ -192,8 +178,8 @@ let g:Tex_SectionMaps=0
 let g:Tex_SectionMenus=0
 
 " Work with lines without change insert mode.
-nmap <A-m> O<Esc>
-nmap <A-M> o<Esc>
+nmap - O<Esc>
+nmap _ o<Esc>
 
 " Set buffer navigation using F10.
 set wildcharm=<C-Z>
@@ -202,11 +188,11 @@ set wildcharm=<C-Z>
 nnoremap * *<C-O>
 
 " Remap H and L to end and begin of line.
-noremap H ^
-noremap L g_
+noremap <c-h> ^
+noremap <c-l> g_
 
-" Map G to go to the middle of the line.
-nnoremap <S-s> :exe 'normal! '.(virtcol('$')/2).'\|'<cr>
+" Map Ctrk-m to go to the middle of the line.
+nnoremap <c-m> :exe 'normal! '.(virtcol('$')/2).'\|'<cr>
 
 " Set :noh to enter in command mode.
 nnoremap <Space> :noh<CR>
@@ -337,3 +323,6 @@ noremap <A-e> :Ls<cr>
 " Provide hl movements in Insert mode via the <Alt> modifier key
 inoremap <c-h> <C-o>h
 inoremap <c-l> <C-o>l
+
+" Clean ~.viminfo automagically.
+:set viminfo='0,:0,<0,@0,f0
