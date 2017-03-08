@@ -28,6 +28,15 @@ echo " Updating system...                                                      "
 sudo zypper refresh
 sudo zypper update
 
+# Add Packman repository.
+sudo zypper addrepo -f http://packman.inode.at/suse/openSUSE_Leap_42.2/ Packman
+sudo zypper refresh
+
+# Add repo for codecs.
+sudo zypper addrepo -f http://opensuse-guide.org/repo/openSUSE_Leap_42.2/ dvd
+sudo zypper refresh
+
+
 echo ""
 echo "-------------------------------------------------------------------------"
 echo "-------------------------------------------------------------------------"
@@ -102,9 +111,18 @@ $command lam-devel
 $command automake
 
 # Export the necessary alias.
-alias01="alias l='ls-l'"
+alias01="alias l='ls -l'"
 echo $alias01>>.bashrc
 
+# Installing all the codecs.
+$command k3b-codecs 
+$command ffmpeg 
+$command lame 
+$command gstreamer-plugins-bad 
+$command gstreamer-plugins-ugly 
+$command gstreamer-plugins-ugly-orig-addon 
+$command gstreamer-plugins-libav 
+$command libdvdcss2
 
 echo ""
 echo "-------------------------------------------------------------------------"
