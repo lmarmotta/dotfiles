@@ -93,7 +93,10 @@ $command Mesa-libGL1
 $command Mesa-libGL-devel
 $command glu-devel
 $command libXmu-devel
-$command hdf5 hdf5-1_8-devel
+$command hdf5 
+$command hdf5-devel
+$command hdf5-1_8-devel
+$command cgns-devel
 
 # Installing CAE Packages.
 $command libXinerama1-32bit
