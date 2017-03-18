@@ -118,8 +118,10 @@ echo $alias01>>.bashrc
 $command netcdf
 $command netcdf-cxx4-tools
 $command tcl
+$command tcl-devel
 $command tcl-32bit
 $command tk
+$command tk-devel
 $command tk-32bit
 
 # Installing all the codecs.
