@@ -114,6 +114,14 @@ $command automake
 alias01="alias l='ls -l'"
 echo $alias01>>.bashrc
 
+# MOAB specifics.
+$command netcdf
+$command netcdf-cxx4-tools
+$command tcl
+$command tcl-32bit
+$command tk
+$command tk-32bit
+
 # Installing all the codecs.
 $command k3b-codecs 
 $command ffmpeg 
