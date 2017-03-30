@@ -73,7 +73,7 @@ hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
 nmap <S-z> :set syntax=fortran<CR>:let b:fortran_fixed_source=!b:fortran_fixed_source<CR>:set syntax=text<CR>:set syntax=fortran<CR>
 nmap <C-z> :filetype detect<CR>
 
-" No more delays between modes.
+" No more delays between modes (This kills the use of <leader> key).
 set timeoutlen=0
 set ttimeoutlen=0
 
@@ -178,8 +178,8 @@ let g:Tex_SectionMaps=0
 let g:Tex_SectionMenus=0
 
 " Work with lines without change insert mode.
-nmap - O<Esc>
-nmap _ o<Esc>
+nmap _ O<Esc>
+nmap - o<Esc>
 
 " Set buffer navigation using F10.
 set wildcharm=<C-Z>
@@ -188,14 +188,15 @@ set wildcharm=<C-Z>
 nnoremap * *<C-O>
 
 " Remap H and L to end and begin of line.
-noremap <c-h> ^
-noremap <c-l> g_
+noremap <C-h> ^
+noremap <C-l> g_
 
 " Map Ctrk-m to go to the middle of the line.
-nnoremap <c-m> :exe 'normal! '.(virtcol('$')/2).'\|'<cr>
+nnoremap <C-m> :exe 'normal! '.(virtcol('$')/2).'\|'<cr>
 
-" Set :noh to enter in command mode.
+" Set faster tab controls.
 nnoremap <Space> :noh<CR>
+nnoremap <Tab> / <Backspace>
 
 " Comment blocks of code.
 let s:comment_map = { 
@@ -258,7 +259,7 @@ nmap <F3> :bnext<Return>
 
 " Overview of buffers with f10.
 set wildcharm=<C-Z>
-nnoremap <F10> :b <C-Z>
+nnoremap <F9> :b <C-Z>
 
 " Put information in the statusline.
 set laststatus=2                             " always show statusbar  
@@ -291,7 +292,7 @@ python powerline_setup()
 python del powerline_setup
 set laststatus=2
 
-" No more folds.
+" No more folds (I hate this fucking splits).
 set nofoldenable
 
 " List buffers by name.
