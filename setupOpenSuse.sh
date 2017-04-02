@@ -36,6 +36,10 @@ sudo zypper refresh
 sudo zypper addrepo -f http://opensuse-guide.org/repo/openSUSE_Leap_42.2/ dvd
 sudo zypper refresh
 
+# Utilities repo.
+sudo zypper addrepo -f http://download.opensuse.org/repositories/utilities/openSUSE_Leap_42.2/ Utilities
+sudo zypper refresh
+
 
 echo ""
 echo "-------------------------------------------------------------------------"
