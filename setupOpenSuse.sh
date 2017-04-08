@@ -67,7 +67,10 @@ $command gnome-tweak-tool dconf-editor
 # Installing Developing Enviroment.
 $command vim-plugin-colorschemes   # Beautiful colours for my vim <3
 $command vim-plugin-latex          # Latex plugin for my vim <3
-$command tmux                      # Terminal Splitter
+$command tmux                      # 
+$command powerline                 # Terminal multiplexer.
+$command vim-plugin-powerline      #
+$command tmux-powerline 
 $command htop                      # Pratical terminal resource monitor
 $command gdb                       # Command line type debugger
 $command clipboard                 # Trying to fix vim clipboard
@@ -182,3 +185,4 @@ echo "-------------------------------------------------------------------------"
 
 # Not Windows but, for shure, a refresh is ok.
 sudo reboot
+   
