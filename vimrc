@@ -85,13 +85,18 @@ set shiftwidth=4
 set cindent
 filetype indent on
 
+" Set faster tab controls.
+nnoremap <Space> :noh<CR>
+nnoremap <Tab> / <Backspace>
+nnoremap <S-Tab> *N 
+
 " Search.
 set wrapscan            " Continue to top after reaching bottom
+set smartcase           " Ignore case in search.
 set hlsearch            " Highlight search
 set incsearch           " See results of search step by step
 set showmatch           " Parenthesis matches
 set matchtime=2         " Show new matching parenthesis for 2/10th of sec
-set smartcase           " Ignore case in search.
 highlight clear Search                   " Change the highlight style.
 highlight       Search    ctermfg=Red    
 
@@ -193,10 +198,6 @@ noremap <C-l> g_
 
 " Map Ctrk-m to go to the middle of the line.
 nnoremap <C-m> :exe 'normal! '.(virtcol('$')/2).'\|'<cr>
-
-" Set faster tab controls.
-nnoremap <Space> :noh<CR>
-nnoremap <Tab> / <Backspace>
 
 " Comment blocks of code.
 let s:comment_map = { 
