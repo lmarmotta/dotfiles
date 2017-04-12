@@ -68,9 +68,10 @@ $command gnome-tweak-tool dconf-editor
 $command vim-plugin-colorschemes   # Beautiful colours for my vim <3
 $command vim-plugin-latex          # Latex plugin for my vim <3
 $command tmux                      # 
-$command powerline                 # Terminal multiplexer.
+$command powerline                 # 
+$command powerline-fonts           # Powerline.
 $command vim-plugin-powerline      #
-$command tmux-powerline 
+$command tmux-powerline            #
 $command htop                      # Pratical terminal resource monitor
 $command gdb                       # Command line type debugger
 $command clipboard                 # Trying to fix vim clipboard
