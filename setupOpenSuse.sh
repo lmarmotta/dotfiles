@@ -111,6 +111,8 @@ $command libXinerama1-32bit
 $command -t pattern 32bit
 $command Mesa
 $command Mesa-libGL1-32bit
+$command metis
+$command metis-devel
 
 # Installing MPI library (openmpi).
 # Remember to setup the PATH:
