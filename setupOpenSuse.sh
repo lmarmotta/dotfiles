@@ -114,6 +114,13 @@ $command Mesa-libGL1-32bit
 $command metis
 $command metis-devel
 
+# Paraview build specifics.
+$command vtk 
+$command vtk-devel 
+$command vtk-qt 
+$command qt3-devel 
+$command qt3-devel-tools 
+
 # Installing MPI library (openmpi).
 # Remember to setup the PATH:
 # "export PATH=/usr/lib64/mpi/gcc/openmpi/bin:$PATH"
