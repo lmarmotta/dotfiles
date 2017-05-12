@@ -129,6 +129,8 @@ $command openmpi-libs
 $command lam
 $command lam-devel
 $command automake
+$command perf
+$command oprofile
 
 # Export the necessary alias.
 alias01="alias l='ls -l'"
