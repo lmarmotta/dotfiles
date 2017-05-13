@@ -105,6 +105,9 @@ $command hdf5
 $command hdf5-devel
 $command hdf5-1_8-devel
 $command cgns-devel
+$command hdf5 
+$command hdf5-openmpi
+$command hdf5-openmpi-devel
 
 # Installing CAE Packages.
 $command libXinerama1-32bit
