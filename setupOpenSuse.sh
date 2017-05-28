@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Configure a raw OpenSUSE installation.
-# Edited by Leonardo 29/06/2016  [OpenSUSE Leap 42.1]
 # Updated by Leonardo 11/02/2016 [OpenSUSE Leap 42.2]
 
 
@@ -65,24 +64,24 @@ sudo texhash
 $command gnome-tweak-tool dconf-editor
 
 # Installing Developing Enviroment.
-$command vim-plugin-colorschemes   # Beautiful colours for my vim <3
-$command vim-plugin-latex          # Latex plugin for my vim <3
-$command tmux                      # 
-$command powerline                 # 
-$command powerline-fonts           # Powerline.
-$command vim-plugin-powerline      #
-$command tmux-powerline            #
-$command htop                      # Pratical terminal resource monitor
-$command gdb                       # Command line type debugger
-$command clipboard                 # Trying to fix vim clipboard
-$command cmake                     # Good building auxiliar.
-$command git                       #
-$command git-core                  # Source version control.
-$command git-svn                   #
-$command kdiff3                    # Merging tool.
-$command lapack                    # Damn fast library.
-$command valgrind                  # Memory debugging.
-$command tcl                       # Some graphical interfaces need it.
+$command vim-plugin-colorschemes   
+$command vim-plugin-latex          
+$command tmux                      
+$command powerline                 
+$command powerline-fonts           
+$command vim-plugin-powerline      
+$command tmux-powerline            
+$command htop                      
+$command gdb                       
+$command clipboard                 
+$command cmake                     
+$command git                       
+$command git-core                  
+$command git-svn                   
+$command kdiff3                    
+$command lapack                    
+$command valgrind                  
+$command tcl                       
 
 # Installing python dependencies
 $command python3-Pygments
@@ -124,9 +123,7 @@ $command vtk-qt
 $command qt3-devel 
 $command qt3-devel-tools 
 
-# Installing MPI library (openmpi).
-# Remember to setup the PATH:
-# "export PATH=/usr/lib64/mpi/gcc/openmpi/bin:$PATH"
+# Installing MPI library.
 $command openmpi
 $command openmpi-libs
 $command lam
@@ -134,10 +131,6 @@ $command lam-devel
 $command automake
 $command perf
 $command oprofile
-
-# Export the necessary alias.
-alias01="alias l='ls -l'"
-echo $alias01>>.bashrc
 
 # MOAB specifics.
 $command netcdf
@@ -161,43 +154,8 @@ $command libdvdcss2
 
 echo ""
 echo "-------------------------------------------------------------------------"
-echo "-------------------------------------------------------------------------"
-echo "Installing Spotfy..."
-
-#==============================================================================
-# Spotfy installation.
-
-sudo zypper refresh
-sudo zypper update
-
-# Install necessary packages
-$command libqt4 libqt4-x11 wget
-
-# Install necessary libraries
-cd /usr/lib64
-wget https://dl.dropboxusercontent.com/u/8593574/Spotify/openSUSE/13.2/libgcrypt.so.11
-ldconfig
-
-# Download and install Spotify stable (v 0.9.17)
-cd /opt
-wget https://dl.dropboxusercontent.com/u/8593574/Spotify/openSUSE/13.2/spotify.tar.bz2
-tar -jxvf ./spotify.tar.bz2
-rm ./spotify.tar.bz2
-ln -s /opt/spotify/spotify-client/spotify /usr/bin/spotify
-
-# Install icons (long line coming up)
-xdg-icon-resource install --size 16 /opt/spotify/spotify-client/Icons/spotify-linux-16.png "spotify-client" && xdg-icon-resource install --size 22 /opt/spotify/spotify-client/Icons/spotify-linux-22.png "spotify-client" && xdg-icon-resource install --size 24 /opt/spotify/spotify-client/Icons/spotify-linux-24.png "spotify-client" && xdg-icon-resource install --size 32 /opt/spotify/spotify-client/Icons/spotify-linux-32.png "spotify-client" && xdg-icon-resource install --size 48 /opt/spotify/spotify-client/Icons/spotify-linux-48.png "spotify-client" && xdg-icon-resource install --size 64 /opt/spotify/spotify-client/Icons/spotify-linux-64.png "spotify-client" && xdg-icon-resource install --size 128 /opt/spotify/spotify-client/Icons/spotify-linux-128.png "spotify-client" && xdg-icon-resource install --size 256 /opt/spotify/spotify-client/Icons/spotify-linux-256.png "spotify-client" && xdg-icon-resource install --size 512 /opt/spotify/spotify-client/Icons/spotify-linux-512.png "spotify-client"
-
-# Add Spotify to the Applications menu
-cp -p /opt/spotify/spotify-client/spotify.desktop /usr/share/applications/
-
-
-echo ""
-echo "-------------------------------------------------------------------------"
-echo "-------------------------------------------------------------------------"
 echo "We are done now so... lets reboot the system  "
 echo "-------------------------------------------------------------------------"
 
 # Not Windows but, for shure, a refresh is ok.
 sudo reboot
-   
