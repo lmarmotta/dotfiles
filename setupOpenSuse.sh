@@ -146,7 +146,7 @@ $command tk
 $command tk-devel
 $command tk-32bit
 
-# Installing all the codecs.
+# Installing all the codecs and usefull stuff.
 $command k3b-codecs 
 $command ffmpeg 
 $command lame 
@@ -155,6 +155,8 @@ $command gstreamer-plugins-ugly
 $command gstreamer-plugins-ugly-orig-addon 
 $command gstreamer-plugins-libav 
 $command libdvdcss2
+$command g3data
+$command vlc
 
 echo ""
 echo "-------------------------------------------------------------------------"
