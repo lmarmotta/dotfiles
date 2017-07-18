@@ -39,6 +39,10 @@ sudo zypper refresh
 sudo zypper addrepo -f http://download.opensuse.org/repositories/utilities/openSUSE_Leap_42.2/ Utilities
 sudo zypper refresh
 
+# Science repository.
+sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_42.2/ Science
+sudo zypper refresh
+
 
 echo ""
 echo "-------------------------------------------------------------------------"
