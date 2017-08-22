@@ -9,7 +9,7 @@ set nocp
 syntax on
 filetype plugin on
 filetype indent on
-set background=dark
+set background=light
 
 " Disable Ctrl+j as insert mode.
 let g:BASH_Ctrl_j = 'off'
@@ -21,11 +21,14 @@ for i in range(97,122)
   exec "map! \e".c." <M-".c.">"
 endfor
 
-" Set the best colorscheme.
-color desert
-
 " Set terminal to 256 colors.
 set t_Co=256
+set background=dark
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
+
+" Set the best colorscheme.
+color desert
 
 " Set clipboard (just Ubuntu).
 set clipboard=unnamedplus
@@ -43,7 +46,6 @@ function! Tab_Or_Complete()
   endif
 endfunction
 :inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-:set dictionary="/usr/dict/words"
 
 " Map not too fast movments. (WARNING: Addictive movments).
 nnoremap <S-j> 5j
@@ -85,7 +87,7 @@ set shiftwidth=4
 set cindent
 filetype indent on
 
-" Set faster tab controls.
+" Set faster search tab controls.
 nnoremap <Space> :noh<CR>
 nnoremap <Tab> / <Backspace>
 nnoremap <S-Tab> *N 
@@ -124,17 +126,17 @@ set so=5                "When moving vertical, start scrolling 4 before .
 set backspace=start,indent,eol
 
 " Don't complete bin files.
-set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.ps,*.pdf,*.cmo,*.cmi,*.cmx 
+set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.ps,*.pdf,*.cmo,*.cmi,*.cmx,*.mod
 
 " Relative or absolute number lines (Ctrl-n).
 function! NumberToggle()
-    if(&nu == 1)
-        set nu!
-        set relativenumber
-    else
-        set norelativenumber
-        set nu!
-    endif
+  if(&nu == 1)
+      set nu!
+      set relativenumber
+  else
+      set norelativenumber
+      set nu!
+  endif
 endfunction
 
 nnoremap <C-n> :call NumberToggle()<CR>
@@ -166,14 +168,15 @@ nnoremap <C-g> :call g:ToggleColorColumn()<CR>
 :command Q q
 :command WA wa
 :command Wa wa
+:command Wqa wqa
 
-" Corrigindo problemas com o vim-latex.
+" Correcting latex-vim problems.
 let g:Tex_BibtexFlavor = 'bibtex'
 let g:Tex_BIBINPUTS = "%\.bib"
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Imap_UsePlaceHolders = 0
 
-" Desabilitando atalhos chatos como Traditional para /item e outros.
+" Correcting the latex shortcuts for vim-latex.
 let g:Tex_AdvancedMath = 0 
 let g:Tex_EnvironmentMaps=0
 let g:Tex_EnvironmentMenus=0
@@ -232,23 +235,23 @@ let s:comment_map = {
     \ }
 
 function! ToggleComment()
-    if has_key(s:comment_map, &filetype)
-        let comment_leader = s:comment_map[&filetype]
-        if getline('.') =~ "^\\s*" . comment_leader . " " 
-            " Uncomment the line
-            execute "silent s/^\\(\\s*\\)" . comment_leader . " /\\1/"
-        else 
-            if getline('.') =~ "^\\s*" . comment_leader
-                " Uncomment the line
-                execute "silent s/^\\(\\s*\\)" . comment_leader . "/\\1/"
-            else
-                " Comment the line
-                execute "silent s/^\\(\\s*\\)/\\1" . comment_leader . " /"
-            end
-        end
-    else
-        echo "No comment leader found for filetype"
-    end
+   if has_key(s:comment_map, &filetype)
+       let comment_leader = s:comment_map[&filetype]
+       if getline('.') =~ "^\\s*" . comment_leader . " " 
+           " Uncomment the line
+           execute "silent s/^\\(\\s*\\)" . comment_leader . " /\\1/"
+       else 
+           if getline('.') =~ "^\\s*" . comment_leader
+               " Uncomment the line
+               execute "silent s/^\\(\\s*\\)" . comment_leader . "/\\1/"
+           else
+               " Comment the line
+               execute "silent s/^\\(\\s*\\)/\\1" . comment_leader . " /"
+           end
+       end
+   else
+       echo "No comment leader found for filetype"
+   end
 endfunction
 
 nnoremap <C-c> :call ToggleComment()<cr>
@@ -328,3 +331,10 @@ inoremap <c-l> <C-o>l
 
 " Clean ~.viminfo automagically.
 :set viminfo='0,:0,<0,@0,f0
+
+" Set enviroment variable for fuzzy find in files.
+set path+=**
+
+" Indent line variable.
+let g:indentLine_char = '.'
+:set list lcs=tab:\|\ 
