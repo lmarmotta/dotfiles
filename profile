@@ -1,3 +1,6 @@
+#
+# Developed for bash shells.
+#
 test -z "$PROFILEREAD" && . /etc/profile || true
 
 # -------------------------------------------------------------------------------
@@ -24,7 +27,7 @@ function parse_git_branch {
 }
 
 # Format the git statusline.
-export PS1='[\u@${HOSTNAME} \w |$(parse_git_branch)|]\> '
+export PS1='[\u@${HOSTNAME} \W |$(parse_git_branch)|]\> '
 
 # -------------------------------------------------------------------------------
 # BASIC ALIAS
