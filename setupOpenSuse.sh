@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configure a raw OpenSUSE installation.
-# Updated by Leonardo 11/02/2016 [OpenSUSE Leap 42.2]
+# Updated by Leonardo 11/02/2016 [OpenSUSE Leap 42.3]
 
 
 echo ""
@@ -28,11 +28,11 @@ sudo zypper refresh
 sudo zypper update
 
 # Add Packman repository.
-sudo zypper addrepo -f http://packman.inode.at/suse/openSUSE_Tumbleweed/ Packman
+sudo zypper addrepo -f http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_42.3/ Packman
 sudo zypper refresh
 
 # Science repository.
-sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Tumbleweed/ Science
+sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_42.3/ Science
 sudo zypper refresh
 
 
