@@ -28,19 +28,11 @@ sudo zypper refresh
 sudo zypper update
 
 # Add Packman repository.
-sudo zypper addrepo -f http://packman.inode.at/suse/openSUSE_Leap_42.2/ Packman
-sudo zypper refresh
-
-# Add repo for codecs.
-sudo zypper addrepo -f http://opensuse-guide.org/repo/openSUSE_Leap_42.2/ dvd
-sudo zypper refresh
-
-# Utilities repo.
-sudo zypper addrepo -f http://download.opensuse.org/repositories/utilities/openSUSE_Leap_42.2/ Utilities
+sudo zypper addrepo -f http://packman.inode.at/suse/openSUSE_Tumbleweed/ Packman
 sudo zypper refresh
 
 # Science repository.
-sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_42.2/ Science
+sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Tumbleweed/ Science
 sudo zypper refresh
 
 
