@@ -35,6 +35,10 @@ sudo zypper refresh
 sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_42.3/ Science
 sudo zypper refresh
 
+# Some codecs.
+sudo zypper addrepo -f http://opensuse-guide.org/repo/openSUSE_Leap_42.3/ Codecs
+sudo zypper refresh
+
 
 echo ""
 echo "-------------------------------------------------------------------------"
@@ -58,6 +62,18 @@ sudo texhash
 
 # Gnome specific stuff.
 $command gnome-tweak-tool dconf-editor
+
+# Installing all the codecs and usefull stuff.
+$command k3b-codecs 
+$command ffmpeg 
+$command lame 
+$command gstreamer-plugins-bad 
+$command gstreamer-plugins-ugly 
+$command gstreamer-plugins-ugly-orig-addon 
+$command gstreamer-plugins-libav 
+$command libdvdcss2
+$command g3data
+$command vlc
 
 # Installing Developing Enviroment.
 $command vim-plugin-colorschemes   
@@ -138,17 +154,6 @@ $command tk
 $command tk-devel
 $command tk-32bit
 
-# Installing all the codecs and usefull stuff.
-$command k3b-codecs 
-$command ffmpeg 
-$command lame 
-$command gstreamer-plugins-bad 
-$command gstreamer-plugins-ugly 
-$command gstreamer-plugins-ugly-orig-addon 
-$command gstreamer-plugins-libav 
-$command libdvdcss2
-$command g3data
-$command vlc
 
 echo ""
 echo "-------------------------------------------------------------------------"
