@@ -3,12 +3,15 @@
 echo ""
 echo "-------------------------------------------------------------------------"
 echo "-------------------------------------------------------------------------"
-echo "          Installing All Dependencies for Open Suse Leap                 "
+echo "          Installing All Dependencies for Fedora 26                      "
 echo "                       Please Wait ...                                   "
 echo "-------------------------------------------------------------------------"
 
 # Base command.
 execute="sudo dnf "
+
+# Enable those non-free repos every distro have.
+sudo rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-25.noarch.rpm
 
 # Update the system.
 $execute check-update
@@ -33,3 +36,9 @@ $execute tcl*
 $execute tk*
 $execute tcsh
 
+# Install other stuff.
+$execute vlc
+
+# Latex.
+$execute texlive-scheme-full
+texconfig rehash
