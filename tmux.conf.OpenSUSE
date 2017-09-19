@@ -1,0 +1,52 @@
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# Terminal colors
+set -g default-terminal "screen-256color" # colors!
+
+# No delay time
+set -s escape-time 0 # fastest command sequences
+
+# switch panes using Alt-arrow without prefix
+bind -n M-h select-pane -L
+bind -n M-l select-pane -R
+bind -n M-k select-pane -U
+bind -n M-j select-pane -D
+
+# Enable mouse control (clickable windows, panes, resizable panes)
+set -g mouse-select-window on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+
+# Fast mode changing
+set -sg escape-time 0
+
+# Open the same dir.
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Permit mouse scroll
+setw -g mode-mouse on
+
+# Mouse copy and paste
+setw -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-select-window on
+
+setw -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+
+# Git status man.
+set -g status-right '#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)'
+
+# Powerline.
+source "/usr/share/tmux/powerline.conf"
