@@ -15,11 +15,6 @@ bind -n M-l select-pane -R
 bind -n M-k select-pane -U
 bind -n M-j select-pane -D
 
-# Enable mouse control (clickable windows, panes, resizable panes)
-set -g mouse-select-window on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-
 # Fast mode changing
 set -sg escape-time 0
 
@@ -34,12 +29,6 @@ setw -g pane-base-index 1
 
 # Permit mouse scroll
 setw -g mode-mouse on
-
-# Mouse copy and paste
-setw -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
 
 setw -g mode-keys vi
 bind-key -t vi-copy 'v' begin-selection

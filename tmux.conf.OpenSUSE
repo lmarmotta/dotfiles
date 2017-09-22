@@ -15,11 +15,6 @@ bind -n M-l select-pane -R
 bind -n M-k select-pane -U
 bind -n M-j select-pane -D
 
-# Enable mouse control (clickable windows, panes, resizable panes)
-set -g mouse-select-window on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-
 # Fast mode changing
 set -sg escape-time 0
 
@@ -35,12 +30,6 @@ setw -g pane-base-index 1
 # Permit mouse scroll
 setw -g mode-mouse on
 
-# Mouse copy and paste
-setw -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
-
 setw -g mode-keys vi
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
@@ -50,3 +39,20 @@ set -g status-right '#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)
 
 # Powerline.
 source "/usr/share/tmux/powerline.conf"
+
+# renumber windows.
+set-option -g renumber-windows on
+
+# re-number tmux sessions 
+# link: https://stackoverflow.com/questions/8469612/how-do-i-make-tmux-reorder-windows-when-one-is-deleted
+for session in $(tmux ls | awk -F: '{print $1}') ;do
+    inum=0
+    for window in $(tmux lsw -t 0 | awk -F: '/^[0-9*]/ {print $1}') ;do
+        if [ ${window} -gt ${inum} ] ;then
+            echo "${session}:${window} -> ${session}:${inum}"
+            tmux movew -d -s ${session}:${window} -t ${session}:${inum}
+        fi
+        inum=$((${inum}+1))
+    done
+done
+
