@@ -112,21 +112,12 @@ $command Mesa-libGL1
 $command Mesa-libGL-devel
 $command glu-devel
 $command libXmu-devel
-$command hdf5 
-$command hdf5-devel
-$command hdf5-1_8-devel
-$command cgns-devel
-$command hdf5 
-$command hdf5-openmpi
-$command hdf5-openmpi-devel
 
 # Installing CAE Packages.
 $command libXinerama1-32bit
 $command -t pattern 32bit
 $command Mesa
 $command Mesa-libGL1-32bit
-$command metis
-$command metis-devel
 
 # Paraview build specifics.
 $command vtk 
@@ -135,7 +126,7 @@ $command vtk-qt
 $command qt3-devel 
 $command qt3-devel-tools 
 
-# Installing MPI library.
+# General libraries.
 $command openmpi
 $command openmpi-libs
 $command lam
@@ -143,10 +134,6 @@ $command lam-devel
 $command automake
 $command perf
 $command oprofile
-
-# MOAB specifics.
-$command netcdf
-$command netcdf-cxx4-tools
 $command tcl
 $command tcl-devel
 $command tcl-32bit
