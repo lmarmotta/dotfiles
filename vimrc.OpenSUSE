@@ -342,5 +342,7 @@ set showtabline=2           " Always display the tabline, even if there is only 
 set noshowmode              " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set t_Co=256
 
-" Spell checking.
-set spell spelllang=en_us
+" Spell checking only for tex and txt files.
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=Yellow
+autocmd BufRead,BufNewFile   *.txt,*.tex set spell spelllang=en_us
