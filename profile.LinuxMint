@@ -1,0 +1,89 @@
+#
+# Developed for bash shells.
+#
+test -z "$PROFILEREAD" && . /etc/profile || true
+
+# -------------------------------------------------------------------------------
+# GIT WARNINGS ON LINE 
+
+# Get the git status and warn modifications.
+function parse_git_dirty {
+    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
+}
+
+# Get the git stash list and warn any stash.
+function parse_git_stash {
+    [[ $(git stash list 2> /dev/null | tail -n1) != "" ]] && echo "+"
+}
+
+# Get the git status and warn any update to be done (get the second line of the commit).
+function parse_git_update {
+    [[ $(git status 2> /dev/null | tail -n2) == '(use "git push" to publish your local commits)' ]] && echo "^"
+}
+
+# Join all warnings about git.
+function parse_git_branch {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)$(parse_git_stash)$(parse_git_update)/"
+}
+
+# Format the git statusline.
+export PS1='[\u@${HOSTNAME} \W |$(parse_git_branch)|]\> '
+
+# -------------------------------------------------------------------------------
+# BASIC ALIAS
+
+# Listing vertically.
+alias l='ls -l'
+
+# MacOS style open command.
+alias open="xdg-open"
+
+# Display export fix.
+alias sudo="sudo DISPLAY=:0"
+
+# Clean Bru3d stuff in folder.
+alias cleanbru="rm fort.8* fort.10* fort.11* fort.13* mass.* mfr-* nohup* tec* fort.9* forces* fort.7* s_join* v_join* TEC* n_roadmap* roadmap* resmaxi.*"
+
+# Clean every Su2 mess.
+alias cleansu2="rm config_* forces_breakdown.dat history.dat restart_flow.dat surface_flow.* flow.dat nohup.out solution_flow.dat"
+
+# Pen-Drive manipulations. [use df to list devices]
+alias release="udisksctl unmount -b"
+alias turnoff="udisksctl power-off -b"
+
+# List packages in system.
+alias lsp="rpm -qa --last"
+
+# Bind the history search as page up and down.
+bind '"\e[A":history-search-backward'
+bind '"\e[A":history-search-backward'
+
+# Backup line.
+alias backup_HD="rsync -arv ~/Carreira ~/Downloads ~/Dropbox ~/Faculdade ~/GitHub ~/GitLab ~/Mestrado ~/Runs ~/Software ~/Templates ~/Videos /run/media/leonardo/BACKUP/backup_avell/"
+
+# Intel fortran enviroemnt variables.
+source /opt/intel/parallel_studio_xe_2015/psxevars.sh &> /dev/null
+
+# -------------------------------------------------------------------------------
+# ENVIROMENT VARIABLES
+
+# The BEST editor.
+export EDITOR=/usr/bin/vim
+
+# OpenMP GNU compiler. 
+export OMP_NUM_THREADS=1
+
+# Define default editor.
+export EDITOR=/usr/bin/vim
+
+# Fix compatibility issues with terminal.
+export TERM="xterm-256color"
+
+# Export include files.
+export PATH=$PATH:/usr/include
+
+# Su2 enviroment variables.
+export SU2_RUN="/home/leonardo/opt/su2/bin"
+export SU2_HOME="/home/leonardo/Software/SU2"
+export PATH=$PATH:$SU2_RUN
+export PYTHONPATH=$PYTHONPATH:$SU2_RUN
