@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Configure a raw OpenSUSE installation.
-# Updated by Leonardo 11/02/2016 [OpenSUSE Leap 42.3]
+# Here I am considering a raw installation that has received bumblebee with
+# nouvau graphics driver.
 
 
 echo ""
@@ -20,30 +21,33 @@ command='sudo zypper -non-iteractive -no-gpg-checks install '
 
 echo ""
 echo "-------------------------------------------------------------------------"
-echo "-------------------------------------------------------------------------"
-echo " Updating system...                                                      "
+echo " Setting up Repositories                                                 "
+
+# Add Packman repository.
+sudo zypper addrepo -f http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_42.3/ packman
+sudo zypper refresh
+
+# Science repository.
+sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_42.3/ science
+sudo zypper refresh
 
 # Updating system from a raw-installation
 sudo zypper refresh
 sudo zypper update
 
-# Add Packman repository.
-sudo zypper addrepo -f http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_42.3/ Packman
-sudo zypper refresh
+echo ""
+echo "-------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------"
+echo " Installing Codecs                                                        " 
 
-# Science repository.
-sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_42.3/ Science
-sudo zypper refresh
-
-# Some codecs.
-sudo zypper addrepo -f http://opensuse-guide.org/repo/openSUSE_Leap_42.3/ Codecs
-sudo zypper refresh
-
+# Note that some very anoying checks will be prompt to the user.
+zypper install ffmpeg gstreamer-plugins-bad gstreamer-plugins-libav 
+zypper install gstreamer-plugins-ugly libx264-148 libx265-130 x264  
 
 echo ""
 echo "-------------------------------------------------------------------------"
 echo "-------------------------------------------------------------------------"
-echo "Installing General stuff..." 
+echo " Installing General stuff..." 
 
 #==============================================================================
 # General installation.
@@ -140,7 +144,6 @@ $command tcl-32bit
 $command tk
 $command tk-devel
 $command tk-32bit
-
 
 echo ""
 echo "-------------------------------------------------------------------------"

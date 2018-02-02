@@ -81,9 +81,6 @@ export TERM="xterm-256color"
 
 # Export include files.
 export PATH=$PATH:/usr/include
-
-# Su2 enviroment variables.
-export SU2_RUN="/home/leonardo/opt/su2/bin"
-export SU2_HOME="/home/leonardo/Software/SU2"
-export PATH=$PATH:$SU2_RUN
-export PYTHONPATH=$PYTHONPATH:$SU2_RUN
+#
+# Export include files.
+export PATH=$PATH:/home/leonardo/opt/hdf5/bin
