@@ -37,6 +37,9 @@ vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 
+" Do not search include files in autocomplete.
+set complete-=i
+
 " Set the tab completion just like bash.
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
