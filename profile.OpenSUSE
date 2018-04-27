@@ -35,6 +35,9 @@ export PS1='[\u@${HOSTNAME} \W |$(parse_git_branch)|]\> '
 # Listing vertically.
 alias l='ls -l'
 
+# Kill tracker
+alias kill_tracker='tracker reset -r'
+
 # MacOS style open command.
 alias open="xdg-open"
 
