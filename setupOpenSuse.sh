@@ -24,25 +24,16 @@ echo "-------------------------------------------------------------------------"
 echo " Setting up Repositories                                                 "
 
 # Add Packman repository.
-sudo zypper addrepo -f http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_42.3/ packman
+sudo zypper addrepo -f http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.0/ packman
 sudo zypper refresh
 
 # Science repository.
-sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_42.3/ science
+sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_15.0/ science
 sudo zypper refresh
 
 # Updating system from a raw-installation
 sudo zypper refresh
 sudo zypper update
-
-echo ""
-echo "-------------------------------------------------------------------------"
-echo "-------------------------------------------------------------------------"
-echo " Installing Codecs                                                        " 
-
-# Note that some very anoying checks will be prompt to the user.
-zypper install ffmpeg gstreamer-plugins-bad gstreamer-plugins-libav 
-zypper install gstreamer-plugins-ugly libx264-148 libx265-130 x264  
 
 echo ""
 echo "-------------------------------------------------------------------------"
@@ -63,9 +54,6 @@ $command texlive-tree-dvips
 $command texlive-minted
 $command texlive-scheme-full
 sudo texhash  
-
-# Gnome specific stuff.
-$command gnome-tweak-tool dconf-editor
 
 # Installing all the codecs and usefull stuff.
 $command k3b-codecs 
@@ -149,6 +137,3 @@ echo ""
 echo "-------------------------------------------------------------------------"
 echo "We are done now so... lets reboot the system  "
 echo "-------------------------------------------------------------------------"
-
-# Not Windows but, for shure, a refresh is ok.
-sudo reboot
