@@ -348,3 +348,6 @@ set noshowmode              " Hide the default mode text (e.g. -- INSERT -- belo
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=Yellow
 autocmd BufRead,BufNewFile   *.txt,*.tex set spell spelllang=en_us
+
+" Shortcut to execute a line in the shell from vim.
+nmap <F6> :exec '!'.getline('.')
