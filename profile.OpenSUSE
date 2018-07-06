@@ -61,6 +61,20 @@ alias lsp="rpm -qa --last"
 bind '"\e[A":history-search-backward'
 bind '"\e[A":history-search-backward'
 
+# Zsh completion style.
+bind 'TAB:menu-complete'
+bind '"\e[Z": menu-complete-backward'
+bind 'set show-all-if-ambiguous on'
+bind 'set match-hidden-files off'
+
+set completion-map-case on
+set completion-display-width 1
+set menu-complete-display-prefix on
+set completion-ignore-case on
+set colored-stats on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
 # Backup line.
 alias backup_HD="rsync -arv ~/Carreira ~/Downloads ~/Dropbox ~/Faculdade ~/GitHub ~/GitLab ~/Mestrado ~/Runs ~/Software ~/Templates ~/Videos /run/media/leonardo/BACKUP/backup_avell/"
 
