@@ -22,7 +22,7 @@ for i in range(97,122)
 endfor
 
 " Set terminal to 256 colors.
-set t_Co=256
+set t_Co=256color
 set background=dark
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE

@@ -57,6 +57,9 @@ alias turnoff="udisksctl power-off -b"
 # List packages in system.
 alias lsp="rpm -qa --last"
 
+# Tmux bizu.
+alias tmux='tmux -2'
+
 # Bind the history search as page up and down.
 bind '"\e[A":history-search-backward'
 bind '"\e[A":history-search-backward'
@@ -74,10 +77,12 @@ export EDITOR=/usr/bin/vim
 export OMP_NUM_THREADS=1
 
 # Define default editor.
+# This fixes the problem with vim colorscheme.
+# https://unix.stackexchange.com/questions/197391/background-color-mismatch-in-vim-and-tmux
 export EDITOR=/usr/bin/vim
 
 # Fix compatibility issues with terminal.
-export TERM="xterm-256color"
+export TERM=screen-256color
 
 # Export include files.
 export PATH=$PATH:/usr/include
