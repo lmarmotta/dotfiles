@@ -98,6 +98,7 @@ $command kdiff3
 $command lapack                    
 $command valgrind                  
 $command tcl                       
+$command ctags
 
 # Installing python dependencies
 $command python3-Pygments
