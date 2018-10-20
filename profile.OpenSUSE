@@ -89,3 +89,7 @@ export PATH=$PATH:/usr/include
 #
 # Export include files.
 export PATH=$PATH:/home/leonardo/opt/hdf5/bin
+
+# Petsc
+export PETSC_DIR=/home/leonardo/GitHub/petsc 
+export PETSC_ARCH=linux-gnu-intel
