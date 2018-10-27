@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # Configure a raw OpenSUSE installation.
-# Here I am considering a raw installation that has received bumblebee with
-# nouvau graphics driver.
 
 
 echo ""
@@ -24,11 +22,11 @@ echo "-------------------------------------------------------------------------"
 echo " Setting up Repositories                                                 "
 
 # Add Packman repository.
-sudo zypper addrepo -f http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_42.3/ packman
+sudo zypper addrepo -f http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.0/ packman
 sudo zypper refresh
 
 # Science repository.
-sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_42.3/ science
+sudo zypper addrepo -f http://download.opensuse.org/repositories/science/openSUSE_Leap_15.0/ science
 sudo zypper refresh
 
 # Updating system from a raw-installation
@@ -103,6 +101,13 @@ $command ctags
 # Installing python dependencies
 $command python3-Pygments
 $command python-Pygments
+$command python-numpy 
+$command python-numpy-devel 
+$command python-numpydoc
+$command python-scipy
+$command python-matplotlib
+$command python-matplotlib-tk
+$command python-mpi4py
 
 # Installing Gnuplot
 $command gnuplot
