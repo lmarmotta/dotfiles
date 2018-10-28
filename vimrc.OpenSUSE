@@ -22,7 +22,7 @@ for i in range(97,122)
 endfor
 
 " Set terminal to 256 colors.
-set t_Co=256color
+set t_Co=256
 set background=dark
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
@@ -337,9 +337,7 @@ let g:indentLine_char = '.'
 :set list lcs=tab:\|\ 
 
 " Powerline stuff.
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+let g:powerline_pycmd="py3"
 set laststatus=2            " Always display the statusline in all windows
 set showtabline=2           " Always display the tabline, even if there is only one tab
 set noshowmode              " Hide the default mode text (e.g. -- INSERT -- below the statusline)
