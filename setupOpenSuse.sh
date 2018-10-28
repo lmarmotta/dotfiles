@@ -50,6 +50,7 @@ echo " Installing General stuff..."
 $command --type pattern devel_basis
 $command gcc-fortran
 $command sensors
+$command dkms
 
 # Installing Latex Dependencies.
 $command texlive-latex
