@@ -38,10 +38,6 @@ echo "-------------------------------------------------------------------------"
 echo "-------------------------------------------------------------------------"
 echo " Installing Codecs                                                        " 
 
-# Note that some very anoying checks will be prompt to the user.
-zypper install ffmpeg gstreamer-plugins-bad gstreamer-plugins-libav 
-zypper install gstreamer-plugins-ugly libx264-148 libx265-130 x264  
-
 echo ""
 echo "-------------------------------------------------------------------------"
 echo "-------------------------------------------------------------------------"
@@ -53,6 +49,7 @@ echo " Installing General stuff..."
 # Installing Build Essentials.
 $command --type pattern devel_basis
 $command gcc-fortran
+$command sensors
 
 # Installing Latex Dependencies.
 $command texlive-latex
