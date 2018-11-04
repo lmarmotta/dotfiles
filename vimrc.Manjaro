@@ -356,6 +356,3 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-" No foldable.
-set foldmethod=syntax
-set nofoldenable

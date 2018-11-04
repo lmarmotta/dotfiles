@@ -32,3 +32,4 @@ git clone https://github.com/su2code/SU2.git
 git clone https://github.com/su2code/TestCases.git
 git clone https://github.com/suavecode/Tutorials.git
 git clone https://github.com/suavecode/SUAVE.git
+git clone https://bitbucket.org/fathomteam/moab.git
