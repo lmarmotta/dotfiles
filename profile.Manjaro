@@ -45,7 +45,7 @@ alias open="xdg-open"
 alias sudo="sudo DISPLAY=:0"
 
 # Clean Bru3d stuff in folder.
-alias cleanbru="rm fort.8* fort.10* fort.11* fort.13* mass.* mfr-* nohup* tec* fort.9* forces* fort.7* s_join* v_join* TEC* n_roadmap* roadmap* resmaxi.* SHEAR*"
+alias cleanbru="rm fort.8* fort.10* fort.11* fort.13* mass.* mfr-* nohup* tec* fort.9* forces* fort.7* s_join* v_join* TEC* n_roadmap* roadmap* resmaxi.* SHEAR* walldst* shear*"
 
 # Clean every Su2 mess.
 alias cleansu2="rm config_* forces_breakdown.dat history.dat restart_flow.dat surface_flow.* flow.dat nohup.out solution_flow.dat"
