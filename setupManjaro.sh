@@ -63,4 +63,4 @@ $command cpio
 $command python
 $command freetype vim-latexsuite htop librtmp0 lib32-librtmp0 cpio libzapojit 
 $command libzip libzmf libzdb libzen 
-
+$command gdb valgrind k3b
