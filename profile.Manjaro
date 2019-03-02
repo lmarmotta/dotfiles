@@ -65,7 +65,7 @@ bind '"\e[A":history-search-backward'
 bind '"\e[A":history-search-backward'
 
 # Backup line.
-alias backup_HD="rsync -arv ~/Carreira ~/Downloads ~/Faculdade ~/GitHub ~/GitLab ~/Mestrado ~/Runs ~/Software ~/Templates ~/Videos /run/media/leonardo/BACKUP/backup_avell/"
+alias backup_HD="rsync -arv ~/Carreira ~/Downloads ~/Faculdade ~/GitHub ~/GitLab ~/Doutorado ~/Mestrado ~/Runs ~/Software ~/Templates ~/Videos /run/media/leonardo/BACKUP/backup_avell/"
 
 # -------------------------------------------------------------------------------
 # ENVIROMENT VARIABLES
@@ -96,3 +96,9 @@ export PETSC_ARCH=linux-gnu-intel
 
 # SLEPC
 export SLEPC_DIR=/home/leonardo/GitHub/slepc
+
+# SU2
+export SU2_RUN="/home/leonardo/opt/su2/bin"
+export SU2_HOME="/home/leonardo/GitHub/SU2"
+export PATH=$PATH:$SU2_RUN
+export PYTHONPATH=$PYTHONPATH:$SU2_RUN
