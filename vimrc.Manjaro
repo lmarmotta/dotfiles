@@ -134,11 +134,11 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.ps,*.pdf,*.cmo,*.cmi,*.cmx,*.mod
 " Relative or absolute number lines (Ctrl-n).
 function! NumberToggle()
   if(&nu == 1)
-      set nu!
-      set relativenumber
+      set nu! rnu!
+      set number relativenumber
   else
       set norelativenumber
-      set nu!
+      set nonu! nornu!
   endif
 endfunction
 
@@ -355,4 +355,7 @@ if !exists(":DiffOrig")
     command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
           \ | wincmd p | diffthis
 endif
+
+" Quick tip for replacing tabs.
+" :%s/\t/ /g
 
