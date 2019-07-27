@@ -28,6 +28,7 @@ highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 
 " Set the best colorscheme.
+" color molokai
 color desert
 
 " Set clipboard (just Ubuntu).
@@ -359,3 +360,7 @@ endif
 " Quick tip for replacing tabs.
 " :%s/\t/ /g
 
+set statusline +=\ [Fun(%{tagbar#currenttag('%s','')})]
+
+" Let ctrlp search on root dir.
+let g:ctrlp_working_path_mode = 0
