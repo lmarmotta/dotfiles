@@ -364,3 +364,12 @@ set statusline +=\ [Fun(%{tagbar#currenttag('%s','')})]
 
 " Let ctrlp search on root dir.
 let g:ctrlp_working_path_mode = 0
+
+" fzf config
+" http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
+nnoremap <C-p> :Files<cr>
+let g:fzf_action = {
+   \ 'ctrl-t': 'tab split',
+   \ 'ctrl-x': 'split',
+   \ 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'down': '~20%' }
