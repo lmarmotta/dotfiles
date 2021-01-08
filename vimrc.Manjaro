@@ -344,6 +344,7 @@ set showtabline=2           " Always display the tabline, even if there is only 
 set noshowmode              " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 " Spell checking only for tex and txt files.
+" https://www.linux.com/training-tutorials/using-spell-checking-vim/
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=Yellow
 autocmd BufRead,BufNewFile   *.txt,*.tex set spell spelllang=en_us
