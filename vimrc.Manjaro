@@ -374,3 +374,6 @@ let g:fzf_action = {
    \ 'ctrl-x': 'split',
    \ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'down': '~20%' }
+
+" For some reason the latex files stop to be recognized by the editor.
+let g:tex_flavor = 'tex'
